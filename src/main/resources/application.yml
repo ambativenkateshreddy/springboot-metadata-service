@@ -1,0 +1,49 @@
+spring:
+  application:
+    name: saas-metadata-manager
+
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3307/saas?useUnicode=true&characterEncoding=utf8&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+    username: root
+    password: secret
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+  flyway:
+    enabled: false
+
+tenant:
+  datasource:
+    username: root
+    password: secret
+
+multitenancy:
+  tenants:
+    - tenant_acme
+    - tenant_globex
+    - tenant_initech
+
+server:
+  port: 8081
+  error:
+    include-message: always
+    include-binding-errors: always
+    include-stacktrace: always
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,prometheus
+  metrics:
+    export:
+      prometheus:
+        enabled: true
+
+logging:
+  level:
+    com.saas.metadata: INFO
+    org.springframework.jdbc: WARN
