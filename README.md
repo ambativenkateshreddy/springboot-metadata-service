@@ -25,7 +25,7 @@ docker-compose up mysql -d
 
 ### 2. Run the app
 ```bash
-./mvnw spring-boot:run
+mvn spring-boot:run
 ```
 Flyway will auto-create and migrate all tenant schemas on startup.
 
